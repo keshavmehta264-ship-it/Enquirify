@@ -1,195 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ClientFlow Systems</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#020617;
-  --accent:#00f0ff;
-  --accent2:#8b5cf6;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:Poppins,sans-serif;
-  background:var(--bg);
-  color:#fff;
-  overflow-x:hidden;
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #0a0f2c, #020617);
+    color: white;
 }
 
-/* CANVAS */
-canvas{
-  position:fixed;
-  inset:0;
-  z-index:-1;
+section {
+    padding: 80px 10%;
+    text-align: center;
 }
 
-/* SECTIONS */
-.section{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:80px 10%;
-  text-align:center;
+h1 {
+    font-size: 3rem;
+    background: linear-gradient(90deg,#00f0ff,#8b5cf6);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
-/* TYPO */
-h1{
-  font-size:3rem;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text;
-  color:transparent;
+p {
+    color: #aaa;
 }
-h2{margin-bottom:20px}
 
 /* BUTTON */
-.btn{
-  margin-top:20px;
-  padding:14px 30px;
-  border:none;
-  border-radius:30px;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  color:#000;
-  font-weight:bold;
-  cursor:pointer;
+.btn {
+    padding: 14px 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+    background: linear-gradient(90deg,#00f0ff,#8b5cf6);
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00f0ff;
 }
 
 /* CARDS */
-.cards{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  justify-content:center;
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
-.card{
-  width:260px;
-  padding:20px;
-  border-radius:16px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  backdrop-filter:blur(10px);
-  transition:.3s;
+
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 15px;
+    width: 260px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
 }
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 30px var(--accent);
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px #00f0ff;
+}
+
+/* FORM */
+input, textarea {
+    padding: 14px;
+    width: 100%;
+    margin-top: 12px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+
+/* CONTACT BOX */
+.contact-box {
+    background: rgba(255,255,255,0.05);
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
-
 <!-- HERO -->
-<section class="section hero">
-  <h1>Smart Systems That Convert Customers</h1>
-  <p>We build high-converting systems, not just websites.</p>
-  <button class="btn" onclick="wa()">Get Free Demo</button>
+<section>
+    <h1>Grow Your Business With Smart Systems</h1>
+    <p>I help businesses generate leads & convert them into customers.</p>
+
+    <button class="btn" onclick="sendWA()">Get Free Demo</button>
 </section>
 
 <!-- SERVICES -->
-<section class="section services">
-  <h2>Services</h2>
-  <div class="cards">
-    <div class="card">Lead Generation</div>
-    <div class="card">WhatsApp Funnels</div>
-    <div class="card">Conversion Systems</div>
-  </div>
+<section>
+    <h2>My Services</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Lead Generation</h3>
+            <p>Get consistent enquiries for your business.</p>
+        </div>
+
+        <div class="card">
+            <h3>WhatsApp Systems</h3>
+            <p>Convert visitors into paying customers instantly.</p>
+        </div>
+
+        <div class="card">
+            <h3>Landing Pages</h3>
+            <p>High converting pages built for sales.</p>
+        </div>
+
+        <div class="card">
+            <h3>Growth Systems</h3>
+            <p>Complete systems to scale your business.</p>
+        </div>
+    </div>
 </section>
 
-<!-- CTA -->
-<section class="section">
-  <h2>Ready to Grow?</h2>
-  <button class="btn" onclick="wa()">Start Now</button>
+<!-- FORM -->
+<section>
+    <h2>Start Your Growth</h2>
+
+    <input id="name" placeholder="Your Name">
+    <input id="business" placeholder="Your Business">
+    <textarea id="msg" placeholder="What do you need help with?"></textarea>
+
+    <button class="btn" onclick="formWA()">Send on WhatsApp</button>
 </section>
 
-<!-- LIBRARIES -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- CONTACT -->
+<section>
+    <h2>Contact</h2>
+
+    <div class="contact-box">
+        <p>📞 WhatsApp: 8825184471</p>
+        <p>📧 Email: keshavmehta264@gmail.com</p>
+        <p>📸 Instagram: @keshav15a_</p>
+    </div>
+</section>
 
 <script>
-// ================= THREE.JS =================
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({canvas:document.getElementById('bg'), antialias:true});
-renderer.setSize(innerWidth, innerHeight);
-camera.position.z = 6;
+const number = "918825184471";
 
-// PARTICLES
-const geo = new THREE.BufferGeometry();
-const count = 400;
-const arr = new Float32Array(count*3);
-for(let i=0;i<arr.length;i++){
-  arr[i]=(Math.random()-0.5)*20;
+function sendWA(){
+    let text = "Hello, I want to grow my business through your services.";
+    window.open(`https://wa.me/${number}?text=${encodeURIComponent(text)}`);
 }
-geo.setAttribute('position', new THREE.BufferAttribute(arr,3));
 
-const mat = new THREE.PointsMaterial({size:0.04,color:0x00f0ff});
-const points = new THREE.Points(geo,mat);
-scene.add(points);
+function formWA(){
+    let name = document.getElementById("name").value;
+    let business = document.getElementById("business").value;
+    let msg = document.getElementById("msg").value;
 
-// FLOATING OBJECT
-const cube = new THREE.Mesh(
-  new THREE.BoxGeometry(1,1,1),
-  new THREE.MeshStandardMaterial({color:0x8b5cf6, wireframe:true})
-);
-scene.add(cube);
+    let text = `Hello, I want to grow my business.\n\nName: ${name}\nBusiness: ${business}\nRequirement: ${msg}`;
 
-// LIGHT
-const light = new THREE.PointLight(0xffffff,1);
-light.position.set(5,5,5);
-scene.add(light);
-
-// ANIMATE
-function animate(){
-  requestAnimationFrame(animate);
-  cube.rotation.x+=0.01;
-  cube.rotation.y+=0.01;
-  points.rotation.y+=0.0008;
-  renderer.render(scene,camera);
-}
-animate();
-
-// RESIZE
-addEventListener("resize",()=>{
-  renderer.setSize(innerWidth,innerHeight);
-  camera.aspect=innerWidth/innerHeight;
-  camera.updateProjectionMatrix();
-});
-
-// ================= GSAP =================
-gsap.registerPlugin(ScrollTrigger);
-
-// HERO ENTRY
-gsap.from(".hero h1",{
-  y:80,
-  opacity:0,
-  duration:1.2
-});
-
-// SERVICES ANIMATION
-gsap.from(".card",{
-  scrollTrigger:{
-    trigger:".services",
-    start:"top 70%"
-  },
-  y:60,
-  opacity:0,
-  stagger:0.2,
-  duration:1
-});
-
-// ================= WHATSAPP =================
-function wa(){
-  window.open("https://wa.me/91XXXXXXXXXX?text=Hi%20I%20want%20to%20grow%20my%20business");
+    window.open(`https://wa.me/${number}?text=${encodeURIComponent(text)}`);
 }
 </script>
 
