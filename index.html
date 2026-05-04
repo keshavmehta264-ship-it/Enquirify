@@ -1,897 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enquirify | Growth Agency</title>
-<meta name="description" content="Enquirify builds websites, ads, SEO, social media, and automation systems that help local businesses generate consistent leads.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ClientFlow Systems</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  --bg:#050609;
-  --panel:#101217;
-  --panel-2:#151923;
-  --line:rgba(255,255,255,.12);
-  --text:#f8fafc;
-  --muted:#a8b0bd;
-  --cyan:#00f0c8;
-  --lime:#b8ff6a;
-  --rose:#ff4f91;
-  --amber:#ffc857;
-  --shadow:0 24px 80px rgba(0,0,0,.42);
+  --bg:#020617;
+  --accent:#00f0ff;
+  --accent2:#8b5cf6;
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
-  min-height:100vh;
+  font-family:Poppins,sans-serif;
   background:var(--bg);
-  color:var(--text);
-  font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#fff;
   overflow-x:hidden;
 }
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  background:
-    linear-gradient(135deg,rgba(0,240,200,.16),transparent 33%),
-    linear-gradient(315deg,rgba(255,79,145,.13),transparent 35%),
-    #050609;
-}
-a{color:inherit;text-decoration:none}
-button,input,textarea{font:inherit}
 
-nav{
+/* CANVAS */
+canvas{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:20;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:24px;
-  padding:18px clamp(18px,5vw,72px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-  background:rgba(5,6,9,.76);
-  backdrop-filter:blur(18px);
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:800;
-  letter-spacing:0;
-}
-.brand-mark{
-  display:grid;
-  place-items:center;
-  width:38px;
-  height:38px;
-  border:1px solid rgba(0,240,200,.5);
-  border-radius:8px;
-  color:#001a16;
-  background:linear-gradient(135deg,var(--cyan),var(--lime));
-  box-shadow:0 0 28px rgba(0,240,200,.22);
-}
-.nav-links{display:flex;align-items:center;gap:8px}
-.nav-links a{
-  padding:10px 12px;
-  color:var(--muted);
-  font-size:14px;
-  font-weight:600;
-  border-radius:8px;
-  transition:.25s ease;
-}
-.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.08)}
-
-.hero{
-  position:relative;
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
-  align-items:center;
-  gap:44px;
-  padding:132px clamp(18px,5vw,72px) 72px;
-  overflow:hidden;
-}
-#hero3d{
-  position:absolute;
   inset:0;
   z-index:-1;
-  width:100%;
-  height:100%;
-  opacity:.9;
 }
-.hero-copy{max-width:780px}
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  width:max-content;
-  max-width:100%;
-  padding:8px 12px;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:999px;
-  color:var(--muted);
-  background:rgba(255,255,255,.06);
-  font-size:13px;
-  font-weight:700;
-}
-.pulse{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--cyan);
-  box-shadow:0 0 0 0 rgba(0,240,200,.7);
-  animation:pulse 1.8s infinite;
-}
-@keyframes pulse{
-  70%{box-shadow:0 0 0 12px rgba(0,240,200,0)}
-  100%{box-shadow:0 0 0 0 rgba(0,240,200,0)}
-}
-h1{
-  margin-top:24px;
-  max-width:880px;
-  font-size:clamp(44px,8vw,88px);
-  line-height:.98;
-  letter-spacing:0;
-}
-h1 span{
-  color:transparent;
-  background:linear-gradient(90deg,var(--cyan),var(--lime),var(--amber));
-  -webkit-background-clip:text;
-  background-clip:text;
-}
-.hero p{
-  margin-top:24px;
-  max-width:610px;
-  color:var(--muted);
-  font-size:clamp(16px,2.1vw,20px);
-  line-height:1.7;
-}
-.actions{
+
+/* SECTIONS */
+.section{
+  min-height:100vh;
   display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:12px;
-  margin-top:34px;
-}
-.btn{
-  display:inline-flex;
-  align-items:center;
+  flex-direction:column;
   justify-content:center;
-  gap:10px;
-  min-height:50px;
-  padding:0 20px;
-  border:1px solid transparent;
-  border-radius:8px;
-  font-weight:800;
-  transition:.25s ease;
-}
-.btn-primary{
-  color:#04110f;
-  background:linear-gradient(135deg,var(--cyan),var(--lime));
-  box-shadow:0 16px 40px rgba(0,240,200,.18);
-}
-.btn-secondary{
-  border-color:rgba(255,255,255,.14);
-  color:var(--text);
-  background:rgba(255,255,255,.07);
-}
-.btn:hover{transform:translateY(-2px)}
-
-.growth-console{
-  position:relative;
-  width:min(100%,520px);
-  justify-self:end;
-  padding:18px;
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:8px;
-  background:linear-gradient(180deg,rgba(16,18,23,.92),rgba(9,11,16,.78));
-  box-shadow:var(--shadow);
-  transform-style:preserve-3d;
-  animation:floatCard 7s ease-in-out infinite;
-}
-@keyframes floatCard{
-  0%,100%{transform:perspective(900px) rotateX(5deg) rotateY(-8deg) translateY(0)}
-  50%{transform:perspective(900px) rotateX(1deg) rotateY(6deg) translateY(-16px)}
-}
-.console-top{
-  display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding-bottom:14px;
-  border-bottom:1px solid var(--line);
-  color:var(--muted);
-  font-size:13px;
-  font-weight:700;
+  padding:80px 10%;
+  text-align:center;
 }
-.dots{display:flex;gap:7px}
-.dots i{width:9px;height:9px;border-radius:50%;background:var(--rose)}
-.dots i:nth-child(2){background:var(--amber)}
-.dots i:nth-child(3){background:var(--cyan)}
-.metric-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:18px;
-}
-.metric{
-  min-height:126px;
-  padding:18px;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:rgba(255,255,255,.055);
-}
-.metric b{display:block;font-size:34px;color:var(--cyan);letter-spacing:0}
-.metric span{display:block;margin-top:8px;color:var(--muted);font-size:13px;line-height:1.45}
-.bar-chart{display:flex;align-items:end;gap:8px;height:130px;margin-top:18px}
-.bar{
-  flex:1;
-  border-radius:6px 6px 0 0;
-  background:linear-gradient(180deg,var(--cyan),rgba(0,240,200,.12));
-  animation:rise 2.8s ease-in-out infinite alternate;
-}
-.bar:nth-child(2){height:62%;animation-delay:.25s}
-.bar:nth-child(3){height:84%;animation-delay:.5s}
-.bar:nth-child(4){height:48%;animation-delay:.75s}
-.bar:nth-child(5){height:94%;animation-delay:1s}
-.bar:nth-child(1){height:38%}
-@keyframes rise{from{transform:scaleY(.72);opacity:.72}to{transform:scaleY(1);opacity:1}}
 
-section{padding:92px clamp(18px,5vw,72px)}
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:24px;
-  margin-bottom:32px;
+/* TYPO */
+h1{
+  font-size:3rem;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  color:transparent;
 }
-.title{font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:0}
-.section-head p{max-width:520px;color:var(--muted);line-height:1.7}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;
+h2{margin-bottom:20px}
+
+/* BUTTON */
+.btn{
+  margin-top:20px;
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* CARDS */
+.cards{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 .card{
-  position:relative;
-  min-height:168px;
-  padding:24px;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
-  box-shadow:0 18px 50px rgba(0,0,0,.18);
-  overflow:hidden;
-  transition:.28s ease;
+  width:260px;
+  padding:20px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  transition:.3s;
 }
-.card::before{
-  content:"";
-  position:absolute;
-  inset:auto 18px 0;
-  height:3px;
-  background:linear-gradient(90deg,var(--cyan),var(--rose),var(--amber));
-  opacity:.75;
-}
-.card:hover{transform:translateY(-8px);border-color:rgba(0,240,200,.42)}
-.card h3{font-size:20px;margin-bottom:10px}
-.card p{color:var(--muted);line-height:1.65}
-.testimonial-card{
-  min-height:230px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-.stars{
-  color:var(--amber);
-  font-size:18px;
-  letter-spacing:0;
-  margin-bottom:18px;
-}
-.testimonial-card blockquote{
-  color:#dfe6ef;
-  line-height:1.75;
-  font-size:15px;
-}
-.customer{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top:22px;
-}
-.avatar{
-  display:grid;
-  place-items:center;
-  width:44px;
-  height:44px;
-  border-radius:8px;
-  color:#04110f;
-  background:linear-gradient(135deg,var(--cyan),var(--lime));
-  font-weight:900;
-}
-.customer b{display:block;color:var(--text);font-size:15px}
-.customer span{display:block;margin-top:3px;color:var(--muted);font-size:13px}
-.result-tag{
-  width:max-content;
-  max-width:100%;
-  margin-top:18px;
-  padding:7px 10px;
-  border:1px solid rgba(0,240,200,.28);
-  border-radius:8px;
-  color:var(--cyan);
-  background:rgba(0,240,200,.08);
-  font-size:12px;
-  font-weight:800;
-}
-.service-icon{
-  display:grid;
-  place-items:center;
-  width:42px;
-  height:42px;
-  margin-bottom:18px;
-  border-radius:8px;
-  color:#06110f;
-  background:linear-gradient(135deg,var(--cyan),var(--lime));
-  font-weight:900;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-.stat-box{
-  padding:30px;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:var(--panel);
-}
-.stat{font-size:clamp(40px,6vw,68px);font-weight:800;color:var(--cyan)}
-.stat-box p{margin-top:8px;color:var(--muted)}
-
-.timeline{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  counter-reset:steps;
-}
-.step{
-  counter-increment:steps;
-  min-height:160px;
-  padding:22px;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:var(--panel-2);
-}
-.step::before{
-  content:"0" counter(steps);
-  display:block;
-  margin-bottom:26px;
-  color:var(--cyan);
-  font-weight:800;
-}
-.step h3{font-size:18px}
-.step p{margin-top:8px;color:var(--muted);line-height:1.6}
-
-.pricing .card{min-height:230px}
-.price{margin:20px 0 12px;font-size:42px;font-weight:800;color:var(--cyan)}
-.pricing ul{list-style:none;display:grid;gap:10px;color:var(--muted)}
-.pricing li::before{content:"+";margin-right:8px;color:var(--lime);font-weight:800}
-
-.founder-wrap{
-  display:grid;
-  grid-template-columns:.75fr 1.25fr;
-  gap:20px;
-  align-items:stretch;
-}
-.founder-card,.founder-story{
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
-  padding:28px;
-}
-.founder-card{
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  min-height:320px;
-}
-.founder-photo{
-  display:grid;
-  place-items:center;
-  width:96px;
-  height:96px;
-  border-radius:8px;
-  color:#04110f;
-  background:linear-gradient(135deg,var(--cyan),var(--lime),var(--amber));
-  font-size:38px;
-  font-weight:900;
-  box-shadow:0 18px 46px rgba(0,240,200,.18);
-}
-.founder-card h3{
-  margin-top:22px;
-  font-size:28px;
-}
-.founder-card p,.founder-story p{
-  margin-top:12px;
-  color:var(--muted);
-  line-height:1.75;
-}
-.founder-points{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:24px;
-}
-.founder-point{
-  padding:16px;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:rgba(0,0,0,.18);
-}
-.founder-point b{
-  display:block;
-  color:var(--cyan);
-  margin-bottom:7px;
-}
-
-.contact-wrap{
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:20px;
-  align-items:stretch;
-}
-.contact-panel,.form-panel{
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
-  padding:28px;
-}
-.contact-panel p{color:var(--muted);line-height:1.7;margin-top:14px}
-form{display:grid;gap:14px}
-label{display:grid;gap:8px;color:var(--muted);font-size:13px;font-weight:700}
-input,textarea{
-  width:100%;
-  padding:14px 15px;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:8px;
-  outline:none;
-  background:rgba(0,0,0,.26);
-  color:var(--text);
-  transition:.2s ease;
-}
-textarea{min-height:126px;resize:vertical}
-input:focus,textarea:focus{border-color:rgba(0,240,200,.75);box-shadow:0 0 0 4px rgba(0,240,200,.1)}
-button{
-  min-height:52px;
-  border:0;
-  border-radius:8px;
-  color:#04110f;
-  background:linear-gradient(135deg,var(--cyan),var(--lime));
-  cursor:pointer;
-  font-weight:900;
-}
-.form-note{color:var(--muted);font-size:13px;line-height:1.55}
-footer{
-  padding:44px clamp(18px,5vw,72px) 28px;
-  color:var(--muted);
-  border-top:1px solid var(--line);
-  background:rgba(0,0,0,.24);
-}
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.2fr .8fr .8fr;
-  gap:24px;
-  margin-bottom:28px;
-}
-.footer-brand{
-  color:var(--text);
-  font-size:22px;
-  font-weight:800;
-}
-.footer-grid p{
-  max-width:460px;
-  margin-top:12px;
-  line-height:1.7;
-}
-.footer-col h3{
-  color:var(--text);
-  font-size:14px;
-  margin-bottom:12px;
-}
-.footer-col a,.footer-col span{
-  display:block;
-  width:max-content;
-  max-width:100%;
-  margin-top:9px;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.5;
-}
-.footer-col a:hover{color:var(--cyan)}
-.footer-bottom{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  padding-top:22px;
-  border-top:1px solid var(--line);
-  font-size:14px;
-}
-
-@media (max-width:900px){
-  nav{align-items:flex-start}
-  .nav-links{display:none}
-  .hero{grid-template-columns:1fr;min-height:auto}
-  .growth-console{justify-self:start}
-  .section-head,.contact-wrap,.founder-wrap{display:grid;grid-template-columns:1fr}
-  .stats,.timeline{grid-template-columns:1fr 1fr}
-  .founder-points{grid-template-columns:1fr}
-}
-@media (max-width:620px){
-  .hero{padding-top:110px}
-  .actions{align-items:stretch}
-  .btn{width:100%}
-  .metric-grid,.stats,.timeline{grid-template-columns:1fr}
-  .growth-console{animation:none}
-  .card,.stat-box,.contact-panel,.form-panel{padding:20px}
-  .footer-grid{grid-template-columns:1fr}
-  .footer-bottom{display:grid}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px var(--accent);
 }
 </style>
 </head>
+
 <body>
-<nav>
-  <a class="brand" href="#home" aria-label="Enquirify home">
-    <span class="brand-mark">E</span>
-    <span>Enquirify</span>
-  </a>
-  <div class="nav-links" aria-label="Primary navigation">
-    <a href="#services">Services</a>
-    <a href="#results">Results</a>
-    <a href="#cases">Cases</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
+
+<canvas id="bg"></canvas>
+
+<!-- HERO -->
+<section class="section hero">
+  <h1>Smart Systems That Convert Customers</h1>
+  <p>We build high-converting systems, not just websites.</p>
+  <button class="btn" onclick="wa()">Get Free Demo</button>
+</section>
+
+<!-- SERVICES -->
+<section class="section services">
+  <h2>Services</h2>
+  <div class="cards">
+    <div class="card">Lead Generation</div>
+    <div class="card">WhatsApp Funnels</div>
+    <div class="card">Conversion Systems</div>
   </div>
-</nav>
+</section>
 
-<main>
-  <header class="hero" id="home">
-    <canvas id="hero3d" aria-hidden="true"></canvas>
-    <div class="hero-copy">
-      <div class="eyebrow"><span class="pulse"></span> Growth systems for local businesses</div>
-      <h1>We build <span>revenue systems</span> that bring clients consistently.</h1>
-      <p>Premium websites, high-intent ads, SEO, content, and automation built around one job: turning attention into booked calls and paying customers.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="https://wa.me/918825184471?text=Hi%20Keshav%2C%20I%20want%20to%20chat%20about%20a%20strategy%20call." target="_blank" rel="noopener">Chat on WhatsApp</a>
-        <a class="btn btn-secondary" href="https://instagram.com/keshav15a_" target="_blank" rel="noopener">Instagram</a>
-      </div>
-    </div>
-    <aside class="growth-console" aria-label="Growth dashboard preview">
-      <div class="console-top">
-        <div class="dots"><i></i><i></i><i></i></div>
-        <span>LIVE FUNNEL</span>
-      </div>
-      <div class="metric-grid">
-        <div class="metric"><b>+120%</b><span>Average campaign growth after funnel rebuild</span></div>
-        <div class="metric"><b>65+</b><span>Qualified leads per month from targeted ads</span></div>
-      </div>
-      <div class="bar-chart" aria-hidden="true">
-        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-      </div>
-    </aside>
-  </header>
+<!-- CTA -->
+<section class="section">
+  <h2>Ready to Grow?</h2>
+  <button class="btn" onclick="wa()">Start Now</button>
+</section>
 
-  <section id="services">
-    <div class="section-head">
-      <h2 class="title">Services</h2>
-      <p>Everything is connected into one acquisition engine, so your website, ads, content, and follow-up all push toward booked conversations.</p>
-    </div>
-    <div class="grid">
-      <article class="card"><div class="service-icon">W</div><h3>Website Development</h3><p>Fast landing pages that make your offer clear and convert visitors into leads.</p></article>
-      <article class="card"><div class="service-icon">A</div><h3>Ads Management</h3><p>Meta and Google campaigns structured around profitable local intent.</p></article>
-      <article class="card"><div class="service-icon">S</div><h3>SEO</h3><p>Search visibility systems for businesses that need steady local discovery.</p></article>
-      <article class="card"><div class="service-icon">C</div><h3>Content Writing</h3><p>Trust-building copy for pages, ads, posts, and customer follow-up.</p></article>
-      <article class="card"><div class="service-icon">M</div><h3>Social Media</h3><p>Sharper positioning and content direction for Instagram-led growth.</p></article>
-      <article class="card"><div class="service-icon">F</div><h3>Automation Systems</h3><p>Lead capture, reminders, and WhatsApp flows that reduce manual follow-up.</p></article>
-    </div>
-  </section>
-
-  <section id="results">
-    <div class="section-head">
-      <h2 class="title">Results</h2>
-      <p>Clear numbers, clean reporting, and campaigns designed to improve week by week.</p>
-    </div>
-    <div class="stats">
-      <div class="stat-box"><div class="stat">+120%</div><p>Growth in campaign response</p></div>
-      <div class="stat-box"><div class="stat">65+</div><p>Leads generated per month</p></div>
-      <div class="stat-box"><div class="stat">2x</div><p>Sales increase from better funnels</p></div>
-    </div>
-  </section>
-
-  <section id="cases">
-    <div class="section-head">
-      <h2 class="title">Case Studies</h2>
-      <p>Built for appointment-led and footfall-driven businesses that need predictable demand.</p>
-    </div>
-    <div class="grid">
-      <article class="card"><h3>Salon</h3><p>Generated 40+ bookings monthly using a WhatsApp-first funnel.</p></article>
-      <article class="card"><h3>Gym</h3><p>Delivered 65+ leads per month through local targeting and offer testing.</p></article>
-      <article class="card"><h3>Cafe</h3><p>Doubled footfall with sharper Instagram strategy and local campaigns.</p></article>
-      <article class="card"><h3>Local Business</h3><p>Improved Google visibility with a practical SEO and review system.</p></article>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-head">
-      <h2 class="title">Process</h2>
-      <p>A simple operating rhythm: diagnose the bottleneck, build the funnel, launch traffic, then improve from real data.</p>
-    </div>
-    <div class="timeline">
-      <article class="step"><h3>Audit</h3><p>Offer, audience, current traffic, and conversion gaps are reviewed first.</p></article>
-      <article class="step"><h3>Build Funnel</h3><p>Landing page, tracking, lead capture, and WhatsApp flow are connected.</p></article>
-      <article class="step"><h3>Launch Ads</h3><p>Campaigns go live with clear targeting, creative tests, and daily checks.</p></article>
-      <article class="step"><h3>Scale</h3><p>Winning ads, pages, and follow-ups are improved until the system compounds.</p></article>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-head">
-      <h2 class="title">Testimonials</h2>
-      <p>Customer feedback from businesses that needed more leads, clearer follow-up, and a better online presence.</p>
-    </div>
-    <div class="grid">
-      <article class="card testimonial-card">
-        <div>
-          <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
-          <blockquote>"Our salon started getting regular WhatsApp bookings within the first month. The funnel made follow-up simple for my team."</blockquote>
-          <div class="result-tag">40+ bookings/month</div>
-        </div>
-        <div class="customer">
-          <div class="avatar">P</div>
-          <div><b>Priya Sharma</b><span>Salon Owner</span></div>
-        </div>
-      </article>
-      <article class="card testimonial-card">
-        <div>
-          <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
-          <blockquote>"The new ad campaign brought serious inquiries, not random messages. We finally had a proper system to convert leads."</blockquote>
-          <div class="result-tag">65+ leads/month</div>
-        </div>
-        <div class="customer">
-          <div class="avatar">A</div>
-          <div><b>Arjun Verma</b><span>Gym Founder</span></div>
-        </div>
-      </article>
-      <article class="card testimonial-card">
-        <div>
-          <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
-          <blockquote>"Instagram content and local ads changed our cafe visibility. More people discovered us and weekend footfall improved fast."</blockquote>
-          <div class="result-tag">2x footfall</div>
-        </div>
-        <div class="customer">
-          <div class="avatar">N</div>
-          <div><b>Neha Kapoor</b><span>Cafe Manager</span></div>
-        </div>
-      </article>
-      <article class="card testimonial-card">
-        <div>
-          <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
-          <blockquote>"Keshav cleaned up our website, SEO, and lead process. Customers now understand our services before they even call."</blockquote>
-          <div class="result-tag">Better Google visibility</div>
-        </div>
-        <div class="customer">
-          <div class="avatar">R</div>
-          <div><b>Rohit Mehta</b><span>Local Business Owner</span></div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="pricing" id="pricing">
-    <div class="section-head">
-      <h2 class="title">Pricing</h2>
-      <p>Choose the launch level that matches your current growth stage.</p>
-    </div>
-    <div class="grid">
-      <article class="card"><h3>Starter</h3><div class="price">Rs. 10k</div><ul><li>Landing page polish</li><li>Basic lead setup</li><li>WhatsApp CTA</li></ul></article>
-      <article class="card"><h3>Growth</h3><div class="price">Rs. 25k</div><ul><li>Campaign strategy</li><li>Ads setup</li><li>Conversion tracking</li></ul></article>
-      <article class="card"><h3>Scale</h3><div class="price">Rs. 50k</div><ul><li>Full funnel build</li><li>Automation system</li><li>Weekly optimization</li></ul></article>
-    </div>
-  </section>
-
-  <section id="founder">
-    <div class="section-head">
-      <h2 class="title">Founder</h2>
-      <p>Meet the person building Enquirify's growth systems for local businesses.</p>
-    </div>
-    <div class="founder-wrap">
-      <div class="founder-card">
-        <div>
-          <div class="founder-photo">KM</div>
-          <h3>Keshav Mehta</h3>
-          <p>Founder of Enquirify</p>
-        </div>
-        <a class="btn btn-primary" href="https://wa.me/918825184471?text=Hi%20Keshav%2C%20I%20want%20to%20know%20more%20about%20Enquirify." target="_blank" rel="noopener">Chat on WhatsApp</a>
-      </div>
-      <div class="founder-story">
-        <h3>Building simple systems that turn attention into enquiries.</h3>
-        <p>Keshav Mehta started Enquirify to help local businesses grow with clear websites, smarter ads, better content, and practical automation. His focus is on making digital growth simple, trackable, and useful for business owners who want more enquiries without confusing marketing noise.</p>
-        <p>He works closely on funnels, WhatsApp lead flow, SEO basics, and social media strategy so every campaign has one clear purpose: bring better leads and help the business convert them faster.</p>
-        <div class="founder-points">
-          <div class="founder-point"><b>Focus</b><span>Lead generation and WhatsApp funnels</span></div>
-          <div class="founder-point"><b>Style</b><span>Simple strategy with clean execution</span></div>
-          <div class="founder-point"><b>Goal</b><span>More enquiries, better follow-up, more sales</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="contact-wrap">
-      <div class="contact-panel">
-        <h2 class="title">Get a free strategy call</h2>
-        <p>Share your name, business type, and the result you want. The form opens WhatsApp with a clean pre-filled message so you can review it before sending.</p>
-      </div>
-      <div class="form-panel">
-        <form id="leadForm">
-          <label for="name">Name
-            <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
-          </label>
-          <label for="business">Business Type
-            <input type="text" id="business" name="business" placeholder="Salon, gym, cafe, clinic..." autocomplete="organization">
-          </label>
-          <label for="msg">Goal
-            <textarea id="msg" name="msg" placeholder="Tell me what you want to improve"></textarea>
-          </label>
-          <button type="submit">Submit on WhatsApp</button>
-          <p class="form-note">Your message opens in a new WhatsApp tab. Nothing is sent automatically.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">Enquirify</div>
-      <p>Growth partner for local businesses that need better websites, ads, SEO, social media, and automation systems.</p>
-    </div>
-    <div class="footer-col">
-      <h3>Contact</h3>
-      <a href="mailto:keshavmehta264@gmail.com">Email: keshavmehta264@gmail.com</a>
-      <a href="https://wa.me/918825184471" target="_blank" rel="noopener">WhatsApp: +91 88251 84471</a>
-      <a href="https://instagram.com/keshav15a_" target="_blank" rel="noopener">Instagram: @keshav15a_</a>
-    </div>
-    <div class="footer-col">
-      <h3>Services</h3>
-      <span>Website Development</span>
-      <span>Ads Management</span>
-      <span>SEO & Automation</span>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>Â© 2026 Enquirify. All rights reserved.</span>
-    <span>Websites. Ads. SEO. Automation.</span>
-  </div>
-</footer>
+<!-- LIBRARIES -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <script>
-const canvas = document.getElementById("hero3d");
-const ctx = canvas.getContext("2d");
-let width = 0;
-let height = 0;
-let particles = [];
-let mouse = { x: 0, y: 0 };
+// ================= THREE.JS =================
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas:document.getElementById('bg'), antialias:true});
+renderer.setSize(innerWidth, innerHeight);
+camera.position.z = 6;
 
-function resizeCanvas(){
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  width = canvas.clientWidth;
-  height = canvas.clientHeight;
-  canvas.width = Math.floor(width * dpr);
-  canvas.height = Math.floor(height * dpr);
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const count = Math.max(70, Math.min(150, Math.floor(width / 10)));
-  particles = Array.from({ length: count }, () => ({
-    x: (Math.random() - .5) * width,
-    y: (Math.random() - .5) * height,
-    z: Math.random() * 900 + 120,
-    speed: Math.random() * .8 + .25,
-    size: Math.random() * 2 + .8
-  }));
+// PARTICLES
+const geo = new THREE.BufferGeometry();
+const count = 400;
+const arr = new Float32Array(count*3);
+for(let i=0;i<arr.length;i++){
+  arr[i]=(Math.random()-0.5)*20;
 }
+geo.setAttribute('position', new THREE.BufferAttribute(arr,3));
 
-function draw3D(){
-  ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = "rgba(5,6,9,.34)";
-  ctx.fillRect(0, 0, width, height);
-  const cx = width * .62 + mouse.x * 18;
-  const cy = height * .48 + mouse.y * 18;
+const mat = new THREE.PointsMaterial({size:0.04,color:0x00f0ff});
+const points = new THREE.Points(geo,mat);
+scene.add(points);
 
-  particles.forEach((p, index) => {
-    p.z -= p.speed;
-    if(p.z < 80){
-      p.x = (Math.random() - .5) * width;
-      p.y = (Math.random() - .5) * height;
-      p.z = 1000;
-    }
-    const scale = 420 / p.z;
-    const x = cx + p.x * scale;
-    const y = cy + p.y * scale;
-    const alpha = Math.max(.08, 1 - p.z / 1000);
-    const radius = p.size * scale;
+// FLOATING OBJECT
+const cube = new THREE.Mesh(
+  new THREE.BoxGeometry(1,1,1),
+  new THREE.MeshStandardMaterial({color:0x8b5cf6, wireframe:true})
+);
+scene.add(cube);
 
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(0,240,200,${alpha})`;
-    ctx.fill();
+// LIGHT
+const light = new THREE.PointLight(0xffffff,1);
+light.position.set(5,5,5);
+scene.add(light);
 
-    for(let j = index + 1; j < particles.length; j += 11){
-      const q = particles[j];
-      const qScale = 420 / q.z;
-      const qx = cx + q.x * qScale;
-      const qy = cy + q.y * qScale;
-      const dist = Math.hypot(x - qx, y - qy);
-      if(dist < 110){
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(qx, qy);
-        ctx.strokeStyle = `rgba(0,240,200,${(1 - dist / 110) * .13})`;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-    }
-  });
-
-  ctx.save();
-  ctx.translate(width * .72, height * .44);
-  ctx.rotate(performance.now() / 4200);
-  ctx.strokeStyle = "rgba(255,79,145,.18)";
-  ctx.lineWidth = 2;
-  for(let i = 0; i < 3; i++){
-    ctx.beginPath();
-    ctx.ellipse(0, 0, 180 + i * 34, 54 + i * 18, i * .72, 0, Math.PI * 2);
-    ctx.stroke();
-  }
-  ctx.restore();
-
-  requestAnimationFrame(draw3D);
+// ANIMATE
+function animate(){
+  requestAnimationFrame(animate);
+  cube.rotation.x+=0.01;
+  cube.rotation.y+=0.01;
+  points.rotation.y+=0.0008;
+  renderer.render(scene,camera);
 }
+animate();
 
-window.addEventListener("resize", resizeCanvas);
-window.addEventListener("pointermove", event => {
-  mouse.x = (event.clientX / window.innerWidth - .5);
-  mouse.y = (event.clientY / window.innerHeight - .5);
+// RESIZE
+addEventListener("resize",()=>{
+  renderer.setSize(innerWidth,innerHeight);
+  camera.aspect=innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
 });
-resizeCanvas();
-draw3D();
 
-document.getElementById("leadForm").addEventListener("submit", event => {
-  event.preventDefault();
-  const form = event.currentTarget;
-  const data = new FormData(form);
-  const name = String(data.get("name") || "").trim();
-  const business = String(data.get("business") || "").trim();
-  const goal = String(data.get("msg") || "").trim();
+// ================= GSAP =================
+gsap.registerPlugin(ScrollTrigger);
 
-  const message = [
-    "Hi Keshav, I want a free strategy call.",
-    `Name: ${name}`,
-    `Business: ${business || "Not specified"}`,
-    `Goal: ${goal || "Not specified"}`
-  ].join("\n");
-
-  const whatsappUrl = `https://wa.me/918825184471?text=${encodeURIComponent(message)}`;
-  window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+// HERO ENTRY
+gsap.from(".hero h1",{
+  y:80,
+  opacity:0,
+  duration:1.2
 });
+
+// SERVICES ANIMATION
+gsap.from(".card",{
+  scrollTrigger:{
+    trigger:".services",
+    start:"top 70%"
+  },
+  y:60,
+  opacity:0,
+  stagger:0.2,
+  duration:1
+});
+
+// ================= WHATSAPP =================
+function wa(){
+  window.open("https://wa.me/91XXXXXXXXXX?text=Hi%20I%20want%20to%20grow%20my%20business");
+}
 </script>
+
 </body>
 </html>
